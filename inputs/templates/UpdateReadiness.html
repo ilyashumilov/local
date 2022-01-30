@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .one {
+            padding:10px;
+            margin:5px;  
+            border: thin solid black;
+            border-radius: 1px;
+           
+            }
+        
+        .overlay1 {
+            margin-top: 5px;
+
+            height: 0px;
+            position: absolute;  /* <-- added declarations */
+            left: 0; top: 100%;  /*     here               */
+            width: 100%;         /*     and here...        */
+           
+}
+        
+
+        
+        .container1 {
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            transform: translate(-50%, -50%);
+            font-size:110%;
+            text-align: center;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+            
+
+        }
+
+        .h2 {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:400%;
+            font-weight: 700%;
+            color: red;
+            outline: none;
+            text-decoration: none;
+            position: absolute;
+        }
+
+        .h2:hover{
+          font-size:405%;  
+        }
+
+        .button{
+            margin: 5px;
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            background: none;
+            padding: 10px;
+            margin-left: 5px;
+            margin-right:2px;
+            color: black;
+            font-size:80%;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+           
+        }
+
+        .button:hover {
+    
+            background: black;
+            outline: none;
+            color: white;
+            cursor: pointer;
+           
+        }
+        
+        .a {
+            margin-left: 5px;
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 10px;
+            color: black;
+            font-size:80%;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            border-radius: 1px;
+            
+           }
+        
+        .a:hover {
+    
+            background: black;
+            outline: none;
+            color: white;
+            
+        }
+        
+        .b {
+            margin-left: 5px;
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 10px;
+            color: black;
+            font-size:80%;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            border-radius: 1px;
+            
+           }
+        
+        .b:hover {
+    
+            background: red;
+            outline: none;
+            border: thin solid red;
+            }
+         .m {
+            margin-left: 5px;
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 10px;
+            color: black;
+            font-size:80%;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            border-radius: 1px;
+            
+           }
+        
+        .m:hover {
+    
+            background: black;
+            outline: none;
+            color: white;
+        }
+        
+        .line {
+            white-space: nowrap;
+            text-align: left;
+        }
+        
+        .line1 {
+            white-space: nowrap;
+            text-align:left;
+        }
+
+    </style>
+
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <title>OPS</title>
+
+</head>
+
+<body>
+
+<a href = "{% url 'OPS'  %}" class=h2>VIPA</a>
+
+<div class="container1">
+
+    <form method = 'POST'>
+        {% csrf_token %}
+        
+        <div class="line" >
+            {{ form.number }}
+            {{ form.cntr }}
+            {{ form.Tons }}
+            {{ form.comment }} 
+
+            <button class='button' type="submit">Submit</button>
+            <a href = "{% url 'Split' read_id  %}" class='a'>Split</a>
+            <a href = "{% url 'Delete' read_id  %}" class='a'>Delete</a>
+            <a href = "{% url 'OPS'  %}" class='a'>Back</a>
+
+        </div>        
+        
+        <div class ='overlay' id ="variants"></div> 
+          
+    </form>
+
+
+</div>
+
+</body>
+
+</html>

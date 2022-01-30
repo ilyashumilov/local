@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'StylePO.css' %}">
+
+    <meta charset="UTF-8">
+    <title>OPS</title>
+
+</head>
+
+<body>
+<a href = "{% url 'OPS'  %}" class=h2>VIPA</a>
+<div class="box">
+    
+    <form method = 'POST'>
+        {% csrf_token %}
+
+        {{ indexform.date }}
+        {{ indexform.Proveedor }}
+        {{ indexform.material }}
+        {{ indexform.Origin }}
+        {{ indexform.spt }}          
+
+        <button type="submit">Submit</button>
+        
+        {{ indexform.price }}
+        {{ indexform.currency }}
+        
+        {{ indexform.cntr }}
+        {{ indexform.Tons }}
+        {{ indexform.status }}          
+        <a href = "{% url 'CreateBuffer'  %}" class="Buffer">Buffer</a>
+        
+    </form>
+    <a href = "{% url 'OPS'  %}" class="link">Back</a>
+    <div class="variants_box1" id="variants_box1"></div>
+    <div class="variants_box3" id="variants_box3"></div>
+    <div class="variants_box2" id="variants_box2"></div>
+</div>
+    
+<script type="text/javascript">
+    const values1 = {{proveedores|safe}};
+    const values2 = {{ports|safe}};
+    const values3 = {{materials|safe}};
+</script>
+<script src="{% static 'ScriptPO.js' %}">
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OPS</title>
+    <style>
+        
+
+        .h2 {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:400%;
+            font-weight: 700%;
+            color: red;
+            outline: none;
+            text-decoration: none;
+            position: absolute;
+        }
+
+        .h2:hover{
+          font-size:405%;  
+        }
+
+        .link1 {
+            outline: none;
+            text-decoration: none;
+            color: white;
+            font-size:90%;
+           }
+        
+        .link1: hover {
+            outline: none;
+            text-decoration: none;
+            color: black;
+            font-size:90%;
+           }
+     
+        
+        .row1 {
+            
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 10px;
+            color: black;
+            font-size:80%;
+            
+            background-color: white;
+        }
+        
+        .row1:hover {
+            background: black;
+            outline: none;
+            color: white;
+        }
+        
+        .row {
+            background-color: gold;
+     
+        }        
+        
+          .row2 {
+            background-color: #1f39bf9f; 
+        }              
+        
+        .table {
+            border-spacing: 4px;
+            margin: 20px;
+        }
+
+        .link {
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 10px;
+
+            color: black;
+            font-size:90%;
+           }
+
+
+        .link:hover {
+            background: black;
+            color: white;
+            outline: none;
+
+        }
+        
+        td, th {
+            
+            padding: 8px;
+            margin: 10px;
+            width: 40%;
+        }
+        
+        .row4 {
+            background-color: #7FFF00;
+        }   
+        
+        .row5 {
+            background-color: red; 
+        }   
+
+        .container1 {
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            transform: translate(-50%, -50%);
+            font-size:110%;
+            text-align: center;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            white-space: nowrap;
+        }
+        .n {
+            max-width:150px;
+            overflow-x: auto;
+        }
+    </style>
+
+</head>
+<body>
+<a href = "{% url 'OPS'  %}" class=h2>VIPA</a>
+    
+
+
+<div class="container1" >
+    
+    <table class="table" align="center" >
+
+        
+        <tr>
+            <td> Forwarder </td>
+            <td> Line </td>
+            <td> POL </td>
+            <td> POD </td>
+            <td> Terms </td>
+            <td> Period </td>
+            <td> Contract </td> 
+            <td> Rate </td>
+            <td> Additional </td>
+            <td> Margin </td> 
+        </tr>
+        {% for i in price %}
+        <tr class = row>
+            <td> {{ i.forwarder }} </td>
+            <td> {{ i.Line }} </td>
+            <td> {{ i.POL }} </td>
+            <td> {{ i.POD }} </td>
+            <td> {{ i.terms }} </td>
+            <td> {{ i.period }} </td>
+            <td class=n> {{ i.contract }} </td>  
+            
+            
+            {% if i.currencyrate == 'USD' %}
+            <td> {{ i.rate }}{{'$'}} </td>
+            {% endif %}
+            {% if i.currencyrate == 'EUR' %}
+            <td> {{ i.rate }}{{'€'}} </td>
+            {% endif %}   
+                        
+            {% if i.currencyadd == 'USD' %}
+            <td> {{ i.additional }}{{'$'}} </td>
+            {% endif %}
+            
+            {% if i.currencyadd == 'EUR' %}
+            <td> {{ i.additional }}{{'€'}} </td>
+            {% endif %} 
+            
+            {% if i.margin <= 0 %}
+            <td class=row5> {{ i.margin }}$ </td>
+            {% endif %}
+    
+            {% if i.margin > 0 %}
+            <td class=row4> {{ i.margin }}$ </td>
+            {% endif %}
+
+            
+            <td class=row1><a href = "{% url 'Select' i.id readiness_id  %}"class=link1>Select</a></td>
+
+        </tr>
+        {% endfor %}
+    </table>
+    <a href = "{% url 'Particular' country ' ' %}" class=row1>Back</a>
+    <a href = "{% url 'Skip' readiness_id  %}" class=row1>Truck</a>
+    <a href = "{% url 'Spot' readiness_id  %}" class=row1>Spot</a>
+</div>
+</body>
+</html>
+

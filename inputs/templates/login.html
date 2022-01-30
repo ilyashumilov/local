@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OPS</title>
+
+        <style>
+        .h2 {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:400%;
+            font-weight: 700%;
+            color: red;
+            outline: none;
+            text-decoration: none;
+            position: absolute;
+        }
+
+        .h2:hover{
+          font-size:405%;  
+        }
+
+        .row {
+
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
+            margin-top: 20px;
+            background-color: yellow;
+            width: 100%;
+        }
+
+        .table {
+            border-spacing: 10px 10px;
+            text-align: center;
+        }
+
+
+        .container1 {
+            position: absolute;
+            left: 50%;
+            top: 40%;
+            transform: translate(-50%, -50%);
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 20px;
+            background: #FEFEFE ;
+            font-size:110%;
+            text-align: center;
+            font-family:sans-serif;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<a href = "{% url 'OPS'  %}" class=h2>VIPA</a>
+
+<div class="container1">
+    <h1>Login</h1>
+    <form method = 'POST'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+    <br>
+
+</div>
+</body>
+
+</html>

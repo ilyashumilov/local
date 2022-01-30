@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .one {
+            padding:10px;
+            margin:5px;  
+            border: thin solid black;
+            border-radius: 1px;
+           
+            }
+        
+        .currency {        
+            padding:9px;
+            padding-top: 10px;
+            margin:5px;  
+            border: thin solid black;
+            border-radius: 1px;
+        }
+        .container1 {
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            transform: translate(-50%, -50%);
+            font-size:110%;
+            text-align: center;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+            
+
+        }
+
+        h1 {
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:150%;
+        }
+        
+        .h2 {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:400%;
+            font-weight: 700%;
+            color: red;
+            outline: none;
+            text-decoration: none;
+            position: absolute;
+        }
+
+        .h2:hover{
+          font-size:405%;  
+        }
+
+        .button{
+            margin: 5px;
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            background: none;
+            padding: 10px;
+            padding-top: 9px;
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-left: 5px;
+            margin-right: 10px;
+            color: black;
+            font-size:80%;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+           
+        }
+
+        .button:hover {
+    
+            background: black;
+            outline: none;
+            color: white;
+            cursor: pointer;
+           
+        }
+        
+        
+        .link {
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 10px;
+            margin-right: 20px;
+            padding-left: 16px;
+            padding-right: 16px;
+            margin-left: 5px;
+            color: black;
+            font-size:80%;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            border-radius: 1px;
+            
+           }
+        
+        .link:hover {
+    
+            background: black;
+            outline: none;
+            color: white;
+        }
+        
+        .line {
+            white-space: nowrap;
+            text-align: left;
+        }
+        
+        .line1 {
+            white-space: nowrap;
+            text-align:left;
+        }
+        
+        #ETD {
+            padding:10px;
+            margin:5px;  
+            border: thin solid black;
+            border-radius: 1px;
+            width: 145px;
+            height: 16px;
+            font-size:80%;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        
+        #ETA{
+            
+            padding:10px;
+            margin:5px;  
+            border: thin solid black;
+            border-radius: 1px;
+            width: 145px;
+            height: 16px;
+            font-size:80%;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+    </style>
+
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <title>OPS</title>
+
+</head>
+
+<body>
+
+<a href = "{% url 'OPS'  %}" class=h2>VIPA</a>
+    
+<div class="container1">
+   
+    <form method = 'POST'>
+
+        {% csrf_token %}
+
+        <div class="line">
+            {{ form.number }}
+            {{ form.bknumber }}
+            <button type="submit" class="button">Submit</button>
+
+        </div>
+        
+        <div class="line1">
+            {{ form.ETD }}
+            {{ form.ETA }}
+            {{ form.equip }}
+            
+            <a href = "{% url 'OPS'  %}" class='link'>Back</a>
+        </div>
+
+    </form>
+    <br>
+
+</div>
+
+    
+   
+</div>
+
+<script type="text/javascript">
+    const countries = {{orders|safe}};
+  
+</script>
+<script src="{% static 'Script1.js' %}">
+</script>
+</body>
+
+</html>

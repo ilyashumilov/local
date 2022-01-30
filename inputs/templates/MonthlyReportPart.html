@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OPS</title>
+    <style>
+        
+        .h2 {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:400%;
+            font-weight: 700%;
+            color: red;
+            outline: none;
+            text-decoration: none;
+            position: absolute;
+        }
+
+        .h2:hover{
+          font-size:405%;  
+        }
+        
+        .link1 {
+            outline: none;
+            text-decoration: none;
+            color: white;
+            font-size:90%;
+           }
+        
+        .link1: hover {
+            outline: none;
+            text-decoration: none;
+            color: black;
+            font-size:90%;
+           }
+        
+        .row1 {
+            
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 10px;
+            color: black;
+            font-size:80%;
+            background-color: white;
+        }
+        
+        .row1:hover {
+            background: black;
+            outline: none;
+            color: black;
+        }
+        
+        .row0,.row0e {
+            background-color: #30393d6c;
+            font-size:100%;
+            font-weight:bold;
+        }
+        .row0e {
+            max-width: 80px;
+            overflow-x: auto;
+        }
+        
+        .row7 {
+            background-color: red;
+        }
+             
+        .row2,.row2e {
+            background-color: #ffad0ab1;
+        }
+        .row2e {
+            max-width: 80px;
+            overflow-x: auto;
+        }
+        .table {
+            border-spacing: 4px;
+            margin: 20px;
+            font-size:80%;
+        }
+
+        .link {
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 8px;
+            margin-top: 10px;
+            color: black;
+            font-size:90%;
+            margin-left: -2px;
+            margin-right: -7px;
+           }
+
+
+        .link:hover {
+            background: black;
+            color: white;
+            outline: none;
+
+        }
+        
+        
+        .link1 {
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 8px;
+            margin: 5px;
+            color: black;
+            font-size:90%;
+           }
+
+
+        .link1:hover {
+            background: black;
+            color: white;
+            outline: none;
+
+        }
+        
+
+        .box {
+            width: 1400px;
+            max-height: 710px;
+            margin: 120px auto;
+            padding: 10px;
+            position: relative;
+            font-size:110%;
+            text-align: center;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            white-space: nowrap;
+            overflow-y: auto;
+            overflow-x: auto;
+        }
+        
+        td, th {   
+            padding: 8px;
+            margin: 10px;
+            width: 40%;
+        }
+        
+        .row4 {
+            background-color: #7FFF00; 
+        }     
+        
+        .row5 {
+            background-color: red; 
+        }   
+
+    </style>
+
+</head>
+<body>
+<a href = "{% url 'OPS'  %}" class=h2>VIPA</a>
+<div class="box" >
+    {% for fecha in fechas %}
+    <a href="{% url  'OPS' %}" class ="link1">{{fecha}}</a>
+    {% endfor %}
+        <table class="table" align="center" >
+        
+        {% if len != 0 %}
+        <tr>
+            <td class=row0> Number </td>
+            <td class=row0> BK </td>
+            <td class=row0> SO date </td>
+            <td class=row0> PO date </td>
+            <td class=row0> Supplier </td>
+            <td class=row0> Client </td>
+            <td class=row0> Or. city </td>
+    
+            <td class=row0> Or. country </td>
+            <td class=row0> Dest. city </td>
+            <td class=row0> Dest. country </td>
+            <td class=row0> Material </td>
+        
+            <td class=row0> Cntr </td>
+            <td class=row0> Tons </td>
+            <td class=row0> Min payload </td>
+            
+            <td class=row0> Forwarder </td>
+            <td class=row0> Carrier </td>            
+            <td class=row0> ETD </td>
+            <td class=row0> ETA </td>
+            <td class=row0> SI number </td>
+            <td class=row0> Equip </td>
+            <td class=row0e> Photos </td>
+            <td class=row0> M $ </td>
+            <td class=row0> M € </td>
+        </tr>
+        {% endif %}
+
+        {% for item in all %}
+
+        <tr>
+            <td class=row2> {{ item.number }} </td>
+            <td class=row2> {{ item.bknumber }} </td>
+            <td class=row2> {{ item.sodate }} </td>
+            <td class=row2> {{ item.podate }} </td>
+            <td class=row2> {{ item.Supplier }} </td>
+            <td class=row2> {{ item.client }} </td>
+            <td class=row2> {{ item.origincity }} </td>
+    
+            <td class=row2> {{ item.origincountry }} </td>
+            <td class=row2> {{ item.destinationcity }} </td>
+            <td class=row2> {{ item.destinationcountry }} </td>
+            
+
+            <td class=row2> {{ item.material }} </td>
+            
+            <td class=row2> {{ item.cntr }} </td>
+            <td class=row2> {{ item.Tons }} </td>
+            <td class=row2> {{ item.min }} </td>
+            
+            <td class=row2> {{ item.forwarder }} </td>
+            <td class=row2> {{ item.line }} </td>           
+            
+            <td class=row2> {{ item.ETD }} </td>
+            <td class=row2> {{ item.ETA }} </td>
+            
+            <td class=row2> {{ item.shipinstr }} </td>
+            <td class=row2> {{ item.equip }} </td>
+            <td class=row2e> {{ item.link }} </td>
+
+            {% if item.margin <= 0 %}
+            <td class=row5> {{ item.margin }} </td>
+            {% endif %}
+    
+            {% if item.margin > 0 %}
+            <td class=row4> {{ item.margin }} </td>
+            {% endif %}
+            
+            {% if item.numero <= 0 %}
+            <td class=row5> {{ item.marginEUR }} </td>
+            {% endif %}
+    
+            {% if item.numero > 0 %}
+            <td class=row4> {{ item.marginEUR }} </td>
+            {% endif %}
+            
+            <td class=row6><a href="{% url  'MonthlyUpdate' item.id %}" class =link>U</a></td>
+            <td class=row6><a href="{% url  'CostMonthlyView' item.id%}" class =link>N</a></td>
+            {% if request.user.username == 'managerlatam' or request.user.username == 'managereurope' or request.user.username == 'managerrussia' %}
+            <td class=row6><a href="{% url  'FinCostMonthlyView' item.id%}" class =link>F</a></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+        {% if len1 != 0 %}
+        <tr>
+            <td class=row0> Number </td>
+            <td class=row0> BK </td>
+            <td class=row0> SO date </td>
+            <td class=row0> PO date </td>
+            <td class=row0> Supplier </td>
+            <td class=row0> Client </td>
+            <td class=row0> Or. city </td>
+    
+            <td class=row0> Or. country </td>
+            <td class=row0> Dest. city </td>
+            <td class=row0> Dest. country </td>
+            <td class=row0> Material </td>
+        
+            <td class=row0> Cntr </td>
+            <td class=row0> Tons inv. </td>
+            <td class=row0> Tons act. </td>
+            <td class=row0> Transaction </td>
+            <td class=row0> Min payload </td>
+            
+            <td class=row0> Forwarder </td>
+            <td class=row0> Carrier </td>            
+            <td class=row0> ETD </td>
+            <td class=row0> ETA </td>
+            <td class=row0> SI number </td>
+            <td class=row0> Equip </td>
+            <td class=row0e> Photos </td>
+            <td class=row0> M $ </td>
+            <td class=row0> M € </td>
+        </tr>
+        {% endif %}
+
+        {% for item in all1 %}
+
+        <tr>
+            <td class=row2> {{ item.number }} </td>
+            <td class=row2> {{ item.bknumber }} </td>
+            <td class=row2> {{ item.sodate }} </td>
+            <td class=row2> {{ item.podate }} </td>
+            <td class=row2> {{ item.Supplier }} </td>
+            <td class=row2> {{ item.client }} </td>
+            <td class=row2> {{ item.origincity }} </td>
+    
+            <td class=row2> {{ item.origincountry }} </td>
+            <td class=row2> {{ item.destinationcity }} </td>
+            <td class=row2> {{ item.destinationcountry }} </td>
+            
+
+            <td class=row2> {{ item.material }} </td>
+            
+            <td class=row2> {{ item.cntr }} </td>
+            <td class=row2> {{ item.Tons }} </td>
+            <td class=row2> {{ item.Tonsact }} </td>
+            <td class=row2> {{ item.transaction }} </td>
+
+            <td class=row2> {{ item.min }} </td>
+            
+            <td class=row2> {{ item.forwarder }} </td>
+            <td class=row2> {{ item.line }} </td>           
+            
+            <td class=row2> {{ item.ETD }} </td>
+            <td class=row2> {{ item.ETA }} </td>
+            
+            <td class=row2> {{ item.shipinstr }} </td>
+            <td class=row2> {{ item.equip }} </td>
+            <td class=row2e> {{ item.link }} </td>
+            
+            {% if item.margin <= 0 %}
+            <td class=row5> {{ item.margin }} </td>
+            {% endif %}
+    
+            {% if item.margin > 0 %}
+            <td class=row4> {{ item.margin }} </td>
+            {% endif %}
+            
+            {% if item.numero <= 0 %}
+            <td class=row5> {{ item.marginEUR }} </td>
+            {% endif %}
+    
+            {% if item.numero > 0 %}
+            <td class=row4> {{ item.marginEUR }} </td>
+            {% endif %}
+            
+            <td class=row6><a href="{% url  'MonthlyUpdate' item.id %}" class =link>U</a></td>
+            <td class=row6><a href="{% url  'CostMonthlyView' item.id%}" class =link>N</a></td>
+            {% if request.user.username == 'managerlatam' or request.user.username == 'managereurope' or request.user.username == 'managerrussia' %}
+            <td class=row6><a href="{% url  'FinCostMonthlyView' item.id%}" class =link>F</a></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+        <a href="{% url  'ReportMonthly' month %}" class =link>Report</a>
+    </table>
+        
+</div>
+
+</body>
+</html>

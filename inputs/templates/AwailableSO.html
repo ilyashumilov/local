@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OPS</title>
+    <style>
+        
+        .h2 {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:400%;
+            font-weight: 700%;
+            color: red;
+            outline: none;
+            text-decoration: none;
+            position: absolute;
+        }
+
+        .h2:hover{
+          font-size:405%;  
+        }
+
+        .link1 {
+            outline: none;
+            text-decoration: none;
+            color: white;
+            font-size:90%;
+           }
+        
+        .link1: hover {
+            outline: none;
+            text-decoration: none;
+            color: black;
+            font-size:90%;
+           }
+        
+        .row1 {
+            
+            padding: 10px;
+            color: black;
+            font-size:100%;
+            
+            background-color: #1f39bf9f;
+        }
+        
+        .row {
+            background-color: deeppink;
+            font-size:110%;
+     
+        }        
+        
+        .row4 {
+            background-color: #7FFF00;
+        }   
+        .row5 {
+            background-color: red; 
+        }  
+        
+        .table {
+            border-spacing: 4px;
+            margin: 20px;
+        }
+
+        .link {
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 10px;
+
+            color: black;
+            font-size:90%;
+           }
+
+        .link:hover {
+            background: black;
+            color: white;
+            outline: none;
+
+        }
+        
+        td, th {
+            padding: 8px;
+            margin: 10px;
+            width: 40%;
+        }
+        
+        .container1 {
+            width: 1400px;
+            height: 450px;
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            transform: translate(-50%, -50%);
+            font-size:100%;
+            text-align: center;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+        
+        .row2 {
+            
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 10px;
+            color: black;
+            font-size:80%;
+            
+            background-color: white;
+        }
+        
+        .row2:hover {
+            background: black;
+            outline: none;
+            color: black;
+        }
+        
+        .link1 {
+            outline: none;
+            text-decoration: none;
+            color: white;
+            font-size:90%;
+           }
+        
+        .link1: hover {
+            outline: none;
+            text-decoration: none;
+            color: black;
+            font-size:90%;
+           }
+        
+        .order {
+            background-color: gold;
+
+        }
+        .e {
+            max-width: 140px;
+            overflow-y: auto;
+            overflow-x: auto; 
+        }
+    </style>
+
+</head>
+<body>
+<a href = "{% url 'OPS'  %}" class=h2>VIPA</a>
+    
+<div class="container1">
+
+    <table class="table" align="center">
+        <tr class = 'd'>
+            <td>Date</td>
+            <td> Material </td>
+            <td> Supplier </td>
+            <td> Origin </td>
+            <td> Cntr </td>
+            <td> Tons </td>
+            <td> Purchaise Price</td>
+        </tr>
+        
+        <tr class=row >
+            <td> {{ order.date }} </td>
+            <td class=e> {{ order.material }} </td>
+            <td class=e> {{ order.Proveedor }} </td>
+            <td> {{ order.Origin }} </td>
+            <td> {{ order.cntr }} </td>
+            <td> {{ order.Tons }} </td>
+            <td> {{ order.price }} </td>
+        </tr>
+
+        <tr class = 'd'>            
+            <td> Date </td>
+            <td> Number </td>
+            <td> Client </td>
+            <td> Destination </td>
+            <td> Cntrs </td>
+            <td> Tons </td>
+            <td> Min Payload </td>
+            <td> Sales Price </td>
+            <td> Comment </td>
+            <td> Left to load </td>
+        </tr>
+        {% for sale in sales %}
+        {% if sale.number != '00-0000' %}
+        <tr class ='order'>            
+            <td> {{ sale.date }} </td>
+            <td> {{ sale.number }} </td>
+            <td> {{ sale.client }} </td>
+            <td> {{ sale.destination }} </td>
+            <td> {{ sale.cntr }} </td>
+            <td> {{ sale.Tons }} </td>
+            <td> {{ sale.min }} </td>
+            <td> {{ sale.cost }} </td>
+            <td class=e> {{ sale.comment }} </td>
+            
+            {% if closed|get_item:sale.id <= 0 %}
+            <td class=row5> {{ closed|get_item:sale.id }} </td>
+            {% endif %}
+    
+            {% if closed|get_item:sale.id > 0 %}
+            <td class=row4> {{ closed|get_item:sale.id }} </td>
+            {% endif %}
+    
+            <td class=row2><a href = "{% url 'Allocate' purchaise_id sale.id  %}" class='link1'>Select</a></td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+        
+    </table>
+    <a href = "{% url 'SalesViews'   %}" class='link'>Back</a>
+</div>
+
+</body>
+</html>
+

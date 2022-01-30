@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OPS</title>
+    <style>
+        
+        .h2 {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:400%;
+            font-weight: 700%;
+            color: red;
+            outline: none;
+            text-decoration: none;
+            position: absolute;
+        }
+
+        .h2:hover{
+          font-size:405%;  
+        }
+
+        .link1 {
+            outline: none;
+            text-decoration: none;
+            color: white;
+            font-size:90%;
+           }
+        
+        .link1: hover {
+            outline: none;
+            text-decoration: none;
+            color: black;
+            font-size:90%;
+           }
+        
+        .row1 {
+            
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 10px;
+            color: black;
+            font-size:80%;
+            
+            background-color: white;
+        }
+        
+        .row1:hover {
+            background: black;
+            outline: none;
+            color: black;
+        }
+        #ex {
+            max-width: 120px;
+            overflow-x: auto;
+        }
+        
+        .row {
+            background-color:  gold;
+     
+        }        
+        
+          .row2 {
+            background-color: #1f39bf9f; 
+        }    
+        
+          .row3 {
+            background-color: #ffd70063; 
+        }     
+        
+          .row4 {
+            background-color: #7FFF00; 
+        }     
+        
+        .table {
+            border-spacing: 4px;
+            margin: 20px;
+        }
+
+        .link {
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 10px;
+
+            color: black;
+            font-size:90%;
+           }
+
+        .link:hover {
+            background: black;
+            color: white;
+            outline: none;
+
+        }
+        .read {
+            background-color: deeppink;
+        }
+        td, th {
+            
+            padding: 8px;
+            margin: 10px;
+            width: 40%;
+        }
+        
+        .box {
+            width: 1400px;
+            margin: 200px auto;
+            position: relative;
+            text-align: center;
+            height: 1100px;
+            overflow-y: auto;
+            overflow-x: auto;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            white-space: nowrap;
+        }
+        .head {
+            font-size: 90%;
+        }
+        .row4 {
+            background-color: #7FFF00;
+        }   
+
+
+        .row0 {
+            background-color: #07f5f5f4;
+        }      
+
+        .row5 {
+            background-color: red; 
+        }  
+        
+        .update {
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 8px;
+
+            color: black;
+            font-size:85%;
+           }
+
+        .update:hover {
+            background: black;
+            color: white;
+            outline: none;
+
+        }
+        
+        .cntrs {
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 8px;
+            margin-left: -5px;
+
+            color: black;
+            font-size:85%;
+           }
+
+        .cntrs:hover {
+            background: black;
+            color: white;
+            outline: none;
+
+        }
+        .costs {
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 8px;
+            margin-left: -5px;
+
+            color: black;
+            font-size:85%;
+           }
+
+        .costs:hover {
+            background: black;
+            color: white;
+            outline: none;
+        }
+        
+        .row9 {
+            background: orange;
+        }
+        
+        #ex {
+            max-width: 150px;
+            overflow-x: auto;
+        }
+    </style>
+
+</head>
+<body>
+<a href = "{% url 'OPS'  %}" class=h2>VIPA</a>
+    
+<div class = "box">
+
+    <table class="table" align="center">
+
+        {% if a == 1 %}
+        <tr>
+            <td>  </td>
+            <td> Date </td>
+            <td> Number </td>    
+            <td> Client </td>
+            <td> Destination </td>
+            <td> Cntrs </td>
+            <td> Tons </td>
+            <td> Loaded </td>
+            <td> Price </td>
+            <td> Payment terms </td>
+            <td> Material </td>
+            <td> Min </td>
+            <td> Comment </td>
+
+        </tr> 
+    
+        <tr>
+            <td> SO </td>
+            <td class=row> {{ result.date }} </td>
+            <td class=row> {{ result.number }} </td>
+            <td class=row> {{ result.client }} </td>
+            <td class=row> {{ result.destination }} </td>
+            
+            <td class=row> {{ result.cntr }} </td>
+            <td class=row> {{ result.Tons }} </td>
+            <td class=row> {{ loaded }} </td>
+            
+            {% if result.currency == 'USD' %}
+            <td class=row> {{ result.cost }}{{'$'}} </td>
+            {% endif %}
+            {% if result.currency == 'EUR' %}
+            <td class=row> {{ result.cost }}{{'€'}} </td>
+            {% endif %}
+            
+            <td class=row> {{ result.cpt }} </td> 
+            <td class=row id=ex> {{ result.material }} </td>
+
+
+            <td class=row> {{ result.min }} </td>
+
+            <td class=row id=ex> {{ result.comment }} </td>
+            <td class=row1><a href = "{% url 'SalesUpdate1' result.id  %}" class='link1'>Update</a></td>
+        </tr> 
+        {% for purchaise in purchaises %}
+        <tr>
+            <td> PO </td>
+            <td class=row3> {{ purchaise.date }} </td>
+            <td class=row3> {{ purchaise.number }} </td>
+            <td class=row3> {{ purchaise.Proveedor }} </td>
+            <td class=row3> {{ purchaise.Origin }} </td>
+            <td class=row3> {{ purchaise.cntr }} </td>
+            <td class=row3> {{ purchaise.Tons }} </td>
+            <td class=row3> {{ sailed|get_item:purchaise.id }} </td>   
+            {% if purchaise.currency == 'USD' %}
+            <td class=row3> {{ purchaise.price }}{{'$'}} </td>
+            {% endif %}
+            {% if purchaise.currency == 'EUR' %}
+            <td class=row3> {{ purchaise.price }}{{'€'}} </td>
+            {% endif %}
+            <td class=row3> {{ purchaise.spt }} </td>
+
+        </tr>
+        {% endfor %}
+        {% endif %}
+        
+        {% if a == 2 %}
+        <tr class="head">
+            <td>  </td>
+            <td> Date </td>
+            <td> Number </td>
+            <td> Supplier </td>
+            <td> Origin </td>
+            <td> Material </td>
+            <td> Cntrs</td>
+            <td> Tons </td>
+            <td> Sailed </td>
+            <td> Price </td>
+            <td> Supp. paym. terms </td>
+
+        </tr>
+        <tr>
+            <td> PO </td>
+            <td class=row> {{ result.date }} </td>
+            <td class=row> {{ result.number }} </td>
+            <td class=row> {{ result.Proveedor }} </td>
+            <td class=row> {{ result.Origin }} </td>
+            <td class=row id=ex> {{ result.material }} </td>
+            <td class=row> {{ result.cntr }} </td>
+            <td class=row> {{ result.Tons }} </td>
+            <td class=row> {{ loaded }} </td>
+            {% if result.currency == 'USD' %}
+            <td class=row> {{ result.price }}{{'$'}} </td>
+            {% endif %}
+            {% if result.currency == 'EUR' %}
+            <td class=row> {{ result.price }}{{'€'}} </td>
+            {% endif %}
+            <td class=row> {{ result.spt }} </td>
+            <td class=row1><a href = "{% url 'PurchaisesUpdate' result.id  %}" class='link1'>Update</a></td>
+            <td class=row1><a href = "{% url 'PurchaisesDelete' result.id  %}" class='link1'>Delete</a></td>
+        </tr>
+        
+        {% if len1 != 0 %}
+        <tr>
+            <td class=head>  </td>
+            <td class=head> Material </td>
+            <td class=head> Number </td>
+            <td class=head> Carrier </td>
+            <td class=head> BK </td>  
+            <td class=head> Origin </td> 
+            <td class=head> Supplier </td> 
+            <td class=head> Destination </td>
+            <td class=head> Material </td>
+            <td class=head> Cntrs </td>
+            <td class=head> ETD </td>
+            <td class=head> ETA </td>
+            <td class=head> M USD</td>
+            <td class=head> M EUR</td>
+        </tr>
+        {% endif %}      
+        {% for Shipment in shipments %}
+        <tr>
+            <td>Shipment</td>
+            <td class=row2> {{ Shipment.number }} </td>
+            <td class=row2> {{ Shipment.carrier }} </td>
+            <td class=row2> {{ Shipment.equip }} </td>
+            <td class=row2> {{ Shipment.bknumber }} </td>
+            <td class=row2> {{ Shipment.po.Origin }} </td>
+            <td class=row2> {{ Shipment.po.Proveedor.name }} </td>
+            <td class=row2> {{ Shipment.po.so.destination }} </td>
+            <td class=row2 id=ex> {{ Shipment.po.material }} </td>
+            <td class=row2> {{ Shipment.cntr }} </td>
+            <td class=row2> {{ Shipment.ETD }} </td>
+            <td class=row2> {{ Shipment.ETA }} </td>
+            
+            {% if Shipment.margin <= 0 %}
+            <td class=row5> {{ Shipment.margin }} </td>
+            {% endif %}
+    
+            {% if Shipment.margin > 0 %}
+            <td class=row4> {{ Shipment.margin }} </td>
+            {% endif %}
+            
+            {% if Shipment.numero <= 0 %}
+            <td class=row5> {{ Shipment.marginEUR }} </td>
+            {% endif %}
+    
+            {% if Shipment.numero > 0 %}
+            <td class=row4> {{ Shipment.marginEUR }} </td>
+            {% endif %}
+    
+        </tr>
+        {% endfor %}
+    
+       {% if len != 0 %}
+        <tr class='head'>
+            <td>  </td>
+            <td> Number </td>
+            <td> Supplier </td>
+            <td> Origin </td>        
+            <td> Cntrs </td>
+            <td> Tons </td>
+            <td> Comment </td>
+        </tr>
+        {% endif %}
+
+        {% for purchaise in readiness %}
+        <tr>
+            <td> Readiness </td>
+            <td class=read> {{ purchaise.number }} </td>
+            <td class=read> {{ purchaise.Proveedor }} </td>
+            <td class=read> {{ purchaise.Origin }} </td>        
+            <td class=read> {{ purchaise.cntr }} </td>
+            <td class=read> {{ purchaise.Tons }} </td>
+            <td class=read id=ex> {{ purchaise.comment }} </td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+        
+        
+
+        {% if a == 3 %}
+        <tr>
+            <td class=head> Number </td>
+            <td class=head> Carrier </td>
+            <td class=head> Equip </td>
+            <td class=head> BK </td>  
+            <td class=head> Origin </td>
+            <td class=head> Supplier </td> 
+            <td class=head> Destination </td> 
+            <td class=head> Material </td>  
+            <td class=head> Cntrs </td>  
+            <td class=head> ETD </td>
+            <td class=head> ETA </td>
+            <td class=head> M USD</td>
+            <td class=head> M EUR</td>
+            <td class=head>SI/CST</td>
+            <td class=head>MGC</td>
+        </tr>
+        {% endif %}
+    
+        {% if result.BK == False %}
+        <tr>
+            <td class=row2> {{ result.number }} </td>
+            <td class=row2> {{ result.carrier }} </td>
+            <td class=row2> {{ result.equip }} </td>
+            <td class=row2> {{ result.bknumber }} </td>
+            <td class=row2> {{ result.po.Origin }} </td>
+            <td class=row2> {{ result.po.Proveedor.name }} </td>
+            <td class=row2> {{ result.po.so.destination }} </td>
+            <td class=row2 id=ex> {{ result.po.material }} </td>
+            <td class=row2> {{ result.po.cntr }} </td>
+            <td class=row2> {{ result.ETD }} </td>
+            <td class=row2> {{ result.ETA }} </td>       
+            
+            
+            {% if result.margin <= 0 %}
+            <td class=row5> {{ result.margin }} </td>
+            {% endif %}
+    
+            {% if result.margin > 0 %}
+            <td class=row4> {{ result.margin }} </td>
+            {% endif %}
+            
+            {% if result.numero <= 0 %}
+            <td class=row5> {{ result.marginEUR }} </td>
+            {% endif %}
+    
+            {% if result.numero > 0 %}
+            <td class=row4> {{ result.marginEUR }} </td>
+            {% endif %}
+            
+            {% if result.SI == True %}
+            <td class=row4> {{ ' ' }} </td>
+            {% endif %}
+            
+            {% if result.SI == False %}
+            <td class=row5> {{ ' ' }} </td>
+            {% endif %}
+
+            {% if result.Magic == True %}
+            <td class=row4> {{ ' ' }} </td>
+            {% endif %}
+            
+            {% if result.Magic == False %}
+            <td class=row5> {{ ' ' }} </td>
+            {% endif %}
+    
+            {% if result.Customs == True %}
+            <td class=row4> {{ ' ' }} </td>
+            {% endif %}
+            
+            {% if result.Customs == False %}
+            <td class=row5> {{ ' ' }} </td>
+            {% endif %}
+            <td><a href = "{% url 'ShipmentUpdate1' result.id %}" class="update">Update</a></td>
+            <td><a href = "{% url 'Container' result.id %}" class="cntrs">Cntrs</a></td>
+            <td><a href = "{% url 'C' result.id %}" class="costs">Costs</a></td>
+        </tr>
+        {% endif %}
+    
+        {% if result.BK == True %}
+        <tr>
+            <td class=row0> {{ result.number }} </td>
+            <td class=row0> {{ result.carrier }} </td>
+            <td class=row0> {{ result.equip }} </td>
+            <td class=row0> {{ result.bknumber }} </td>
+            <td class=row0> {{ result.po.Origin }} </td>
+            <td class=row0> {{ result.po.Proveedor.name }} </td>
+            <td class=row0> {{ result.po.so.destination }} </td>
+            <td class=row0 id=ex> {{ result.po.material }} </td>
+            <td class=row0> {{ result.po.cntr }} </td>
+            <td class=row0> {{ result.ETD }} </td>
+            <td class=row0> {{ result.ETA }} </td>         
+            
+            {% if result.margin <= 0 %}
+            <td class=row5> {{ result.margin }} </td>
+            {% endif %}
+    
+            {% if result.margin > 0 %}
+            <td class=row4> {{ result.margin }} </td>
+            {% endif %}
+            
+            {% if result.numero <= 0 %}
+            <td class=row5> {{ result.marginEUR }} </td>
+            {% endif %}
+    
+            {% if result.numero > 0 %}
+            <td class=row4> {{ result.marginEUR }} </td>
+            {% endif %}
+            
+            {% if result.SI == True %}
+            <td class=row4> {{ ' ' }} </td>
+            {% endif %}
+            
+            {% if result.SI == False %}
+            <td class=row5> {{ ' ' }} </td>
+            {% endif %}
+
+            {% if result.Magic == True %}
+            <td class=row4> {{ ' ' }} </td>
+            {% endif %}
+            
+            {% if result.Magic == False %}
+            <td class=row5> {{ ' ' }} </td>
+            {% endif %}
+    
+            {% if result.Customs == True %}
+            <td class=row4> {{ ' ' }} </td>
+            {% endif %}
+            
+            {% if result.Customs == False %}
+            <td class=row5> {{ ' ' }} </td>
+            {% endif %}
+            <td><a href = "{% url 'ShipmentUpdate1' result.id %}" class="update">Update</a></td>
+            <td><a href = "{% url 'Container' result.id %}" class="cntrs">Cntrs</a></td>
+            <td><a href = "{% url 'C' result.id %}" class="costs">Costs</a></td>
+
+        </tr>
+        {% endif %}
+
+        {% if a == 0 %}
+        <tr>
+            <td> {{ 'Number' }} </td>
+            <td> {{ 'BK' }} </td>
+            <td> {{ 'Carrier' }} </td>
+            <td> {{ 'SO date' }} </td>
+            <td> {{ 'PO date' }} </td>
+            <td> {{ 'Supplier' }} </td>
+            <td> {{ 'Client' }} </td>
+            <td> {{ 'Or. city' }} </td>
+    
+            <td> {{ 'Or. country' }} </td>
+            <td> {{ 'Dest. city' }} </td>
+            <td> {{ 'Dest. country' }} </td>
+            
+
+            <td> {{ 'Material' }} </td>
+        
+            <td> {{ 'Cntr' }} </td>
+            <td> {{ 'Tons' }} </td>
+            <td> {{ 'Min payload' }} </td>
+            
+            <td> {{ 'ETD' }} </td>
+            <td> {{ 'ETA' }} </td>
+            <td> {{ 'SI number' }} </td>
+            <td> {{ 'M $' }} </td>
+            <td> {{ 'M €' }} </td>
+        </tr>
+
+        <tr>
+            <td class=row9> {{ result.number }} </td>
+            <td class=row9> {{ result.bknumber }} </td>
+            <td class=row9> {{ result.line }} </td>
+            <td class=row9> {{ result.sodate }} </td>
+            <td class=row9> {{ result.podate }} </td>
+            <td class=row9> {{ result.Supplier }} </td>
+            <td class=row9> {{ result.client }} </td>
+            <td class=row9> {{ result.origincity }} </td>
+    
+            <td class=row9> {{ result.origincountry }} </td>
+            <td class=row9> {{ result.destinationcity }} </td>
+            <td class=row9> {{ result.destinationcountry }} </td>
+            
+
+            <td class=row9> {{ result.material }} </td>
+            
+            <td class=row9> {{ result.cntr }} </td>
+            <td class=row9> {{ result.Tons }} </td>
+            <td class=row9> {{ result.min }} </td>
+            
+            <td class=row9> {{ result.ETD }} </td>
+            <td class=row9> {{ result.ETA }} </td>
+            <td class=row9> {{ result.shipinstr }} </td>
+            
+            {% if result.margin <= 0 %}
+            <td class=row5> {{ result.margin }} </td>
+            {% endif %}
+    
+            {% if result.margin > 0 %}
+            <td class=row4> {{ result.margin }} </td>
+            {% endif %}
+            
+            {% if result.numero <= 0 %}
+            <td class=row5> {{ result.marginEUR }} </td>
+            {% endif %}
+    
+            {% if result.numero > 0 %}
+            <td class=row4> {{ result.marginEUR }} </td>
+            {% endif %}
+            
+            <td class=row6><a href="{% url  'MonthlyUpdate1' result.id %}" class =link>U</a></td>
+            <td class=row6><a href="{% url  'CostMonthlyView1' result.id%}" class =link>N</a></td>
+            {% if request.user.username == 'admin' %}
+            <td class=row6><a href="{% url  'FinCostMonthlyView1' result.id%}" class =link>F</a></td>
+            {% endif %}
+            {% if result.destinationcountry == 'Ukraine' or request.user.username == 'managerlatam' or request.user.username == 'managereurope' %}
+            <td><a href = "{% url 'ClaimView' result.id %}" class="link">C</a></td>
+            {% endif %}
+            
+        </tr>
+        {% endif %}
+        {% if a == 9 %}
+        <h1>No result</h1>
+        {% endif %}
+
+    </table>
+    <a href = "{% url 'Search' %}"class='link'>Back</a>
+<div/>
+
+</body>
+</html>

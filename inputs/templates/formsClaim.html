@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .one {
+            padding:10px;
+            margin:5px;  
+            border: thin solid black;
+            border-radius: 1px;
+    
+           
+            }
+        
+        .overlay1 {
+            margin-top: 5px;
+
+            height: 0px;
+            position: absolute;  /* <-- added declarations */
+            left: 0; top: 100%;  /*     here               */
+            width: 100%;         /*     and here...        */
+        }
+        .amount{
+            padding:10px;
+            margin:5px;  
+            border: thin solid black;
+            border-radius: 1px;
+            width: 59px;
+        }
+        
+
+        
+        .container1 {
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            transform: translate(-50%, -50%);
+            font-size:110%;
+            text-align: center;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+            
+
+        }
+
+        h1 {
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:150%;
+        }
+        
+        .h2 {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:400%;
+            font-weight: 700%;
+            color: red;
+            outline: none;
+            text-decoration: none;
+            position: absolute;
+        }
+
+        .h2:hover{
+          font-size:405%;  
+        }
+
+        .button{
+            margin: 5px;
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            background: none;
+            padding: 10px;
+            margin-left: 5px;
+            margin-right: 10px;
+            color: black;
+            font-size:80%;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+           
+        }
+
+        .button:hover {
+    
+            background: black;
+            outline: none;
+            color: white;
+            cursor: pointer;
+           
+        }
+        
+
+        .h2 {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:400%;
+            font-weight: 700%;
+            color: red;
+            outline: none;
+            text-decoration: none;
+            position: absolute;
+        }
+
+        .h2:hover{
+          font-size:405%;  
+        }
+        .line {
+            white-space: nowrap;
+            text-align: right;
+            
+        }
+        
+        .line1 {
+            white-space: nowrap;
+            text-align:left;
+        }
+        #reason {
+            padding-top: 9px;
+            padding-bottom: 9px;
+            padding-left: 9px;
+        }
+        #cntrs {
+            margin-left: 4px;
+            width: 55px;
+        }
+        #tons {
+            width: 53px;
+        }
+
+    </style>
+
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <title>Input form</title>
+
+</head>
+
+<body>
+
+<a href = "{% url 'OPS'  %}" class=h2>VIPA</a>
+
+<div class="container1">
+
+    <form method = 'POST'>
+        {% csrf_token %}
+
+        <div class="line" >
+            {{ indexform.date }}
+            {{ indexform.bl }}
+            {{ indexform.reason }}
+            {{ indexform.cntrs }}
+            {{ indexform.tons }}
+            {{ indexform.comment }}
+            
+            {{ indexform.currency }}
+            {{ indexform.amount }}
+            {{ indexform.photos }}
+            
+            {{ indexform.humidper }}
+            {{ indexform.humidton }}
+            {{ indexform.impur }}
+        
+        </div>
+        
+        <div class="line1"> 
+            
+
+           
+            {{ indexform.cn_currency }}
+            {{ indexform.cn_amount }}
+
+
+            {{ indexform.dn_currency }}
+            
+            {{ indexform.dn_amount }}
+            {{ indexform.settlement_date }}
+                        
+            {{ indexform.profit }}
+            {{ indexform.rate }}
+        
+            {{ indexform.picCust.label }}
+            {{ indexform.picCust }}
+            {{ indexform.picVipa.label }}          
+            {{ indexform.picVipa }}
+            
+            {{ indexform.Sent.label }}
+            {{ indexform.Sent }}
+            {{ indexform.settlement.label }}
+            {{ indexform.settlement }}
+            
+            {{ indexform.claimsupp }}
+            {{ indexform.set }}
+            {{ indexform.docs.label }}
+            {{ indexform.docs }}
+            
+        </div>          
+        <div class ='overlay' id ="variants"></div> 
+        <button class='button' type="submit">Submition</button>  
+    </form>
+    
+   
+</div>
+
+</body>
+
+</html>

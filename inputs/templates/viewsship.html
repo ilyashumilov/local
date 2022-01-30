@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OPS</title>
+    <style>
+        
+        .h2 {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:400%;
+            font-weight: 700%;
+            color: red;
+            outline: none;
+            text-decoration: none;
+            position: absolute;
+        }
+
+        .h2:hover{
+          font-size:405%;  
+        }
+        .row4 {
+            background-color: #7FFF00; 
+        }     
+        
+        .row5 {
+            background-color: red; 
+        } 
+        .link1 {
+            outline: none;
+            text-decoration: none;
+            color: white;
+            font-size:90%;
+           }
+        
+        .link1: hover {
+            outline: none;
+            text-decoration: none;
+            color: black;
+            font-size:90%;
+           }
+        
+        .row1 {
+            
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 10px;
+            color: black;
+            font-size:80%;
+            
+            background-color: white;
+        }
+        
+        .row1:hover {
+            background: black;
+            outline: none;
+            color: black;
+        }
+        
+        .row {
+            background-color: gold;
+     
+        }        
+        
+          .row2 {
+            background-color: #1f39bf9f; 
+        }    
+        
+          .row3 {
+            background-color: deeppink; 
+        }     
+        
+          .row4 {
+            background-color: #7FFF00; 
+        }     
+        
+        .table {
+            border-spacing: 4px;
+            margin: 10px;
+        }
+        
+
+        .link {
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 10px;
+
+
+            color: black;
+            font-size:90%;
+           }
+
+        .link:hover {
+            background: black;
+            color: white;
+            outline: none;
+
+        }
+        
+        td, th {
+            
+            padding: 8px;
+            margin: 10px;
+            width: 40%;
+        }
+        
+        .container1 {
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            transform: translate(-50%, -50%);
+            font-size:110%;
+            text-align: center;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            white-space: nowrap;
+        }
+    </style>
+
+</head>
+<body>
+<a href = "{% url 'OPS'  %}" class=h2>VIPA</a>
+
+    
+<div class="container1" >
+    <table class="table" align="center" >
+        <tr>
+            <td class=row> {{ order.date }} </td>
+            <td class=row> {{ order.number }} </td>
+            <td class=row> {{ order.Proveedor }} </td>
+            <td class=row> {{ order.Origin }} </td>
+            <td class=row> {{ order.cntr }} </td>
+            <td class=row> {{ order.Tons }} </td>
+            <td class=row> {{ order.price }} </td>
+            <td class=row> {{ closed }} </td>
+        </tr>
+    </table>
+    
+    <table class="table" align="center" >
+        {% for Shipment in ship %}
+        <tr>
+            <td class=row2> {{ Shipment.number }} </td>
+            <td class=row2> {{ Shipment.carrier }} </td>
+            <td class=row2> {{ Shipment.bknumber }} </td>
+            <td class=row2> {{ Shipment.cntr }} </td>            
+            <td class=row2> {{ Shipment.ETD }} </td>
+            <td class=row2> {{ Shipment.ETA }} </td>
+
+            <td class=row1><a href = "{% url 'Container' Shipment.id %}" class=link1>Containers</a></td>
+            <td class=row1><a href = "{% url 'Cost' Shipment.id %}" class=link1>Costs</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <table class="table" align="center" >
+        {% for purchaise in read %}
+        <tr>
+            <td class=row3> Readiness </td>
+            <td class=row3> {{ purchaise.number }} </td>
+            <td class=row3> {{ purchaise.Proveedor }} </td>
+            <td class=row3> {{ purchaise.Origin }} </td>        
+            <td class=row3> {{ purchaise.cntr }} </td>
+            <td class=row3> {{ purchaise.Tons }} </td>
+            <td class=row3> {{ purchaise.price }} </td>
+            <td class=row3> {{ purchaise.comment }} </td>
+       </tr>
+        {% endfor %}        
+    </table>
+    
+    <table class="table" align="center" >
+        <tr>
+            <td class=row0> {{ 'Number' }} </td>
+            <td class=row0> {{ 'BK' }} </td>
+    
+
+          
+        
+            <td class=row0> {{ 'Cntr' }} </td>
+            <td class=row0> {{ 'Tons' }} </td>
+            <td class=row0> {{ 'Min payload' }} </td>
+            
+            <td class=row0> {{ 'ETD' }} </td>
+            <td class=row0> {{ 'ETA' }} </td>
+            <td class=row0> {{ 'M $' }} </td>
+            <td class=row0> {{ 'M €' }} </td>
+        </tr>
+
+        {% for item in month %}
+
+        <tr>
+            <td class=row2> {{ item.number }} </td>
+            <td class=row2> {{ item.bknumber }} </td>
+
+
+            
+
+
+            
+            <td class=row2> {{ item.cntr }} </td>
+            <td class=row2> {{ item.Tons }} </td>
+            <td class=row2> {{ item.min }} </td>
+            
+            <td class=row2> {{ item.ETD }} </td>
+            <td class=row2> {{ item.ETA }} </td>
+            
+            {% if item.margin <= 0 %}
+            <td class=row5> {{ item.margin }} </td>
+            {% endif %}
+    
+            {% if item.margin > 0 %}
+            <td class=row4> {{ item.margin }} </td>
+            {% endif %}
+            
+            {% if item.numero <= 0 %}
+            <td class=row5> {{ item.marginEUR }} </td>
+            {% endif %}
+    
+            {% if item.numero > 0 %}
+            <td class=row4> {{ item.marginEUR }} </td>
+            {% endif %}
+
+
+        </tr>
+    
+        {% endfor %}
+
+    </table>
+    
+    <a href = "{% url 'PurchaisesViews' id %}" class='link'>Back</a>
+    
+</div>
+
+</body>
+</html>

@@ -1,0 +1,204 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .one{
+            padding:10px;
+            margin:5px;  
+            border: thin solid black;
+            border-radius: 1px;
+           
+            }
+        .currency {        
+            padding:9px;
+            margin:5px;  
+            border: thin solid black;
+            border-radius: 1px;
+        }
+        
+        .container1 {
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            transform: translate(-50%, -50%);
+            font-size:110%;
+            text-align: center;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+            
+
+        }
+
+        h1 {
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:150%;
+        }
+        
+        .h2 {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:400%;
+            font-weight: 700%;
+            color: red;
+            outline: none;
+            text-decoration: none;
+            position: absolute;
+        }
+
+        .h2:hover{
+          font-size:405%;  
+        }
+        .button{
+            margin: 5px;
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            background: none;
+            padding: 10px;
+            margin-left: 5px;
+            margin-right: 2px;
+            padding-left: 10px;
+            padding-right: 10px;
+            color: black;
+            font-size:90%;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+           
+        }
+
+        .button:hover {
+    
+            background: black;
+            outline: none;
+            color: white;
+            cursor: pointer;
+           
+        }
+        
+        .link {
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 10px;
+            color: black;
+            font-size:90%;
+           }
+
+
+        .link:hover {
+            background: black;
+            color: white;
+            outline: none;
+
+        }
+        
+        .line {
+            white-space: nowrap;
+            text-align: left;
+        }
+        
+        .line1 {
+            white-space: nowrap;
+            text-align:left;
+        }
+
+        .m {
+            margin: 6px;
+            padding-left: 22px;
+            padding-right: 22px;
+            
+        }
+        #ETD {
+            padding:10px;
+            margin:5px;  
+            border: thin solid black;
+            border-radius: 1px;
+            width: 145px;
+            height: 16px;
+            font-size:80%;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        
+        #ETA{
+            
+            padding:10px;
+            margin:5px;  
+            border: thin solid black;
+            border-radius: 1px;
+            width: 145px;
+            height: 16px;
+            font-size:80%;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+    </style>
+
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <title>OPS</title>
+
+</head>
+
+<body>
+<a href = "{% url 'OPS'  %}" class=h2>VIPA</a> 
+    
+<div class="container1">
+   
+    <form method = 'POST'>
+
+        {% csrf_token %}
+
+        <div class="line">
+            {{ form.forwarder }}         
+            {{ form.carrier }}         
+            {{ form.number }}
+            {{ form.equip }}
+            {{ form.Magic.label }}
+            {{ form.Magic }}    
+            {{ form.Customs.label }}
+            {{ form.Customs }}
+            {{ form.BK.label }}
+            {{ form.BK }}
+            {{ form.SI.label }}
+            {{ form.SI }}
+        </div>
+        <div class="line"> 
+            {{ form.shipinstr }}
+            {{ form.bknumber }}
+            {{ form.ETD }}
+            {{ form.ETA }}
+            {{ form.link }}
+        </div>
+        <button type="submit" class="button">Submit</button>
+        <a href = "{% url 'Monthly1' Shipment %}" class='link'>Monthly</a>
+        <a href = "{% url 'Result' number  %}" class=link>Back</a>
+        <a href = "{% url 'ShipmentDelete1' Shipment %}" class='link'>Delete</a>
+    </form>
+     
+     
+
+</div>
+   
+
+<script type="text/javascript">
+    const countries = {{orders|safe}};
+  
+</script>
+<script src="{% static 'Script1.js' %}">
+</script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+

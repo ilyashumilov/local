@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .one {
+            padding:10px;
+            margin:5px;  
+            border: thin solid black;
+            border-radius: 1px;
+            position: absolute;
+           
+         }
+        
+        
+        .box {
+            width: 500px;
+            margin: 300px auto;
+            position: relative;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        
+        .h2 {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:400%;
+            font-weight: 700%;
+            color: red;
+            outline: none;
+            text-decoration: none;
+            position: absolute;
+        }
+
+        .h2:hover{
+          font-size:405%;  
+        }
+
+        .button{
+            margin: 5px;
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            background: none;
+            padding: 9px;
+            padding-bottom: 10px;
+            position: absolute;
+            color: black;
+            font-size:85%;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        .button:hover {
+            background: black;
+            outline: none;
+            color: white;
+            cursor:pointer;
+           
+        }
+        
+        .h2 {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:400%;
+            font-weight: 700%;
+            color: red;
+            outline: none;
+            text-decoration: none;
+            position: absolute;
+        }
+
+        .h2:hover{
+          font-size:405%;  
+        }
+        
+        .line {
+            white-space: nowrap;
+            text-align: right;
+        }
+        
+        .line1 {
+            white-space: nowrap;
+            text-align:left;
+        }
+        
+        .variants_box1 {
+            width: 165px;
+            max-height: 55px;
+            background-color: white;
+            position: absolute;
+            left: 5px;
+            top: 45px;
+            z-index: 1;
+            overflow-y: auto;
+            overflow-x: auto;
+        }
+
+
+        .variants_box2 {
+            width: 144px;
+            max-height: 55px;
+            background-color: white;
+            position: absolute;
+            left: 185px;
+            top: 45px;
+            z-index: 1;
+            overflow-y: auto;
+            overflow-x: auto;
+        }
+
+
+        
+        #POL {
+            left: 0px;
+        }
+        #POD {
+            left: 180px;
+        }
+        
+        .Back {
+            position: absolute;
+            outline: none;
+            padding: 9px;
+            border: thin solid black;
+            text-decoration: none;
+            color: black;
+            left: 365px;
+            top: 5px;
+            font-size:90%;
+        }
+        .Back:hover {
+            background: black;
+            color: white;
+            outline: none;
+        }
+        
+        .Create {
+            position: absolute;
+            outline: none;
+            padding: 9px;
+            border: thin solid black;
+            text-decoration: none;
+            color: black;
+            left: 430px;
+            top: 5px;
+            font-size:90%;
+        }
+        .Create:hover {
+            background: black;
+            color: white;
+            outline: none;
+        }
+        
+        li {
+            list-style: none;
+            padding: 3px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:85%;
+        }
+
+        li:hover {
+            cursor: pointer;
+            background: gold;
+        }
+
+
+    </style>
+
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <title>OPS</title>
+
+</head>
+
+<body>
+
+<a href = "{% url 'OPS'  %}" class="h2">VIPA</a>
+
+<div class="box">
+    <form method = 'POST'>
+        {% csrf_token %}
+        <div class="line">
+            {{ form }}
+            <button type="submit" class = button>Search</button>
+            <a href = "{% url 'OPS'  %}" class='Back'>Back</a>
+            <a href = "{% url 'FreightCreate' %}" class='Create'>Create</a>
+        </div>        
+    </form>
+    <div class="variants_box1" id="variants"></div>
+    <div class="variants_box2" id="variants1"></div>
+</div>
+
+<script type="text/javascript">
+    const countries = {{countries|safe}};
+    const countries1 = {{countries1|safe}};
+</script>
+<script src="{% static 'Script.js' %}">
+</script>
+</body>
+
+</html>
+
+

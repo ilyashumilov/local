@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OPS</title>
+    <style>
+        
+        .h2 {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:400%;
+            font-weight: 700%;
+            color: red;
+            outline: none;
+            text-decoration: none;
+            position: absolute;
+        }
+
+        .h2:hover{
+          font-size:405%;  
+        }
+
+        .link1 {
+            outline: none;
+            text-decoration: none;
+            color: white;
+            font-size:90%;
+           }
+        
+        .link1: hover {
+            outline: none;
+            text-decoration: none;
+            color: black;
+            font-size:90%;
+           }
+        
+        .row1 {
+            
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 10px;
+            color: black;
+            font-size:90%;
+            background-color: white;
+        }
+        
+        .row1:hover {
+            background: black;
+            outline: none;
+            color: black;
+        }
+        
+        .row {
+            background-color: gold;
+     
+        }        
+        
+        .row2 {
+           border: thin solid black;              
+        }   
+        
+          .row2:hover {
+            border: thin solid black;
+            background-color: red; 
+            border: thin solid red;
+        }    
+        .table {
+            border-spacing: 4px;
+            margin: 20px;
+        }
+
+        .link {
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 10px;
+
+            color: black;
+            font-size:90%;
+           }
+
+
+        .link:hover {
+            background: black;
+            color: white;
+            outline: none;
+
+        }
+        
+        td, th {
+            
+            padding: 8px;
+            margin: 10px;
+            width: 40%;
+        }
+        
+
+
+        .container1 {
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            transform: translate(-50%, -50%);
+            font-size:110%;
+            text-align: center;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            white-space: nowrap;
+        }
+    </style>
+
+</head>
+<body>
+<a href = "{% url 'OPS'  %}" class=h2>VIPA</a>
+
+
+<div class="container1">
+    <table class="table" align="center">
+        {% for cost in costs %}
+        <tr>
+            <td class=row> {{ cost.name }} </td>
+            {% if cost.currency == 'USD' %}
+            <td class=row> {{ cost.volume }}{{'$'}} </td>
+            {% endif %}
+            {% if cost.currency == 'EUR' %}
+            <td class=row> {{ cost.volume }}{{'€'}} </td>
+            {% endif %}
+            <td class=row2><a href = "{% url 'CostMonthlyDelete1' cost.id  %}"class=link1>Delete</a></td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td class=row1><a href = "{% url 'Result' number %}"class=link1>Back</a> </td>
+            <td class=row1><a href = "{% url 'CostMonthlyCreate1' monthly_id %}"class=link1>Create</a> </td>
+        </tr>
+    </table>
+    
+    
+   
+</div>
+
+
+</body>
+</html>
+

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    
+    <style>
+        input {
+            border: thin solid black;
+            border-radius: 1px;
+            width: 130px;
+            height: 36px;
+            padding-left: 10px;
+            position: absolute;
+        }
+        .box {
+            width: 300px;
+            margin: 350px auto;
+            position: relative;
+        }
+        button {
+            border: thin solid black;
+            background: none;
+            color: black;
+            border-radius: 1px;
+            width: 90px;
+            height: 40px;
+            padding-left: 0px;
+            position: absolute;
+            left: 155px;
+        }
+
+        button:hover {
+            cursor: pointer;
+            background: black;
+            color: white;
+        }
+        .h2 {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:400%;
+            font-weight: 700%;
+            color: red;
+            outline: none;
+            text-decoration: none;
+            position: absolute;
+        }
+        .variants {
+            width: 144px;
+            max-height: 55px;
+            background-color: white;
+            position: absolute;
+
+            top: 40px;
+            z-index: 1;
+            overflow-y: auto;
+            overflow-x: auto;
+        }
+        li {
+            list-style: none;
+            padding: 3px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:85%;
+        }
+
+        li:hover {
+            cursor: pointer;
+            background: gold;
+        }
+
+        .h2:hover{
+          font-size:405%;  
+        }
+
+    </style>
+    <meta charset="UTF-8">
+    <title>OPS</title>
+
+</head>
+
+<body>
+
+<a href = "{% url 'OPS'  %}" class=h2>VIPA</a> 
+<div class="box">
+        <form method = 'POST'>
+        {% csrf_token %}
+        {{ form }}
+
+        <div class ="button"><button type="submit">Search</button></div>
+        <div class ="variants" id ="variants"></div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    const values = {{all|safe}};
+    const current = '';
+</script>
+<script src="{% static 'Script1.js' %}">
+</script>
+</body>
+
+</html>

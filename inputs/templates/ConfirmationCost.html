@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        
+        .h2 {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:400%;
+            font-weight: 700%;
+            color: red;
+            outline: none;
+            text-decoration: none;
+            position: absolute;
+        }
+
+        .h2:hover{
+          font-size:405%;  
+        }
+        
+        .container1 {
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            transform: translate(-50%, -50%);
+            font-size:110%;
+            text-align: center;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+        }
+
+        .button{
+            margin: 5px;
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            background: none;
+            padding: 10px;
+            margin-left: 5px;
+            margin-right: 10px;
+            color: black;
+            font-size:180%;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+           
+        }
+
+        .button:hover {
+    
+            background: black;
+            outline: none;
+            color: white;
+            cursor:pointer;
+           
+        }
+        
+        .link {
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 10px;
+            color: black;
+            font-size:180%;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            border-radius: 1px;
+            
+           }
+        
+        .link:hover {
+    
+            background: black;
+            outline: none;
+            color: white;
+        }
+        
+    </style>
+
+   
+    <meta charset="UTF-8">
+    <title>Confirmation</title>
+
+</head>
+
+<body>
+
+<a href = "{% url 'OPS'  %}" class=h2>VIPA</a>
+
+<div class="container1">
+    <form method = 'POST'>
+        {% csrf_token %}
+        <a href = "{% url 'CostViews' id %}" class="link">Back</a>    
+        <button class='button' type="submit">Confirm</button>   
+    </form>
+</div>
+
+</body>
+
+</html>

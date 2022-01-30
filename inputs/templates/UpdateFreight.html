@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .one, #period{
+            padding:10px;
+            margin:5px;  
+            border: thin solid black;
+            border-radius: 1px;
+            }
+        
+        .overlay1 {
+            margin-top: 5px;
+
+            height: 0px;
+            position: absolute;  /* <-- added declarations */
+            left: 0; top: 100%;  /*     here               */
+            width: 100%;         /*     and here...        */
+           
+}
+        
+
+        
+        .container1 {
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            transform: translate(-50%, -50%);
+            font-size:110%;
+            text-align: center;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+            
+
+        }
+
+        .h2 {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:400%;
+            font-weight: 700%;
+            color: red;
+            outline: none;
+            text-decoration: none;
+            position: absolute;
+        }
+
+        .h2:hover{
+          font-size:405%;  
+        }
+        .button{
+            margin: 5px;
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            background: none;
+            padding: 10px;
+            margin-left: 92px;
+            margin-right: 10px;
+            color: black;
+            font-size:80%;
+            cursor:pointer;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+           
+        }
+
+        .button:hover {
+    
+            background: black;
+            outline: none;
+            color: white;
+           
+        }
+        
+
+        
+        .line {
+            white-space: nowrap;
+            text-align: left;
+        }
+        
+        .line1 {
+            white-space: nowrap;
+            text-align:left;
+        }
+        
+        .link {
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding-top: 9px;
+            padding-bottom: 10px;
+            padding-left: 16px;
+            padding-right: 16px;
+            color: black;
+            font-size:80%;
+           }
+
+
+        .link:hover {
+            background: black;
+            color: white;
+            outline: none;
+
+        }
+        
+        #rate {
+            width:59px;
+        }
+        
+        #currencyrate{
+            position: absolute;
+            height: 37px;
+            top:48px;
+        }
+        #add{
+            position: absolute;
+            height: 37px;
+            top:48px;
+        }
+
+        #additional {
+            width:59px;
+        }
+
+        
+        #period {
+            margin-left: 90px;
+            width: 145px;
+            font-size:80%;
+            height: 16px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+    </style>
+
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <title>OPS</title>
+
+</head>
+
+<body>
+
+<a href = "{% url 'OPS'  %}" class=h2>VIPA</a>
+
+<div class="container1">
+
+    <form method = 'POST'>
+        {% csrf_token %}
+
+        <div class="line">
+            {{ form.forwarder }}
+            {{ form.Line }}
+            {{ form.POL }}
+            {{ form.POD }}
+            {{ form.terms }}    
+        </div>
+        
+        <div class="line">
+            {{ form.rate }}
+            {{ form.currencyrate }}
+            {{ form.period }}
+            {{ form.contract }}
+            {{ form.additional }} 
+            {{ form.currencyadd }}    
+            <button type="submit" class='button'>Submition</button>
+
+            <a href = "{% url 'FreightViews' POL POD %}" class='link'>Back</a>
+        </div>
+    </form>
+
+</div>
+
+</body>
+
+</html> 
+
+

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Containers</title>
+    <style>
+        
+        .h2 {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:400%;
+            font-weight: 700%;
+            color: red;
+            outline: none;
+            text-decoration: none;
+            position: absolute;
+        }
+
+        .h2:hover{
+          font-size:405%;  
+        }
+
+        .link1 {
+            outline: none;
+            text-decoration: none;
+            color: white;
+            font-size:90%;
+           }
+        
+        .link1: hover {
+            outline: none;
+            text-decoration: none;
+            color: black;
+            font-size:90%;
+           }
+        
+        .row1 {
+            
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 10px;
+            color: black;
+            font-size:80%;
+            
+            background-color: white;
+        }
+        
+        .row1:hover {
+            background: black;
+            outline: none;
+            color: black;
+        }
+        
+        .row {
+            background-color: #ffd70045;
+     
+        }        
+        
+        .row:hover {
+            background-color: gold;
+     
+        } 
+        
+        .table {
+            border-spacing: 4px;
+            margin: 20px;
+        }
+
+        .link {
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 10px;
+
+            color: black;
+            font-size:90%;
+           }
+
+
+        .link:hover {
+            background: black;
+            color: white;
+            outline: none;
+
+        }
+        
+        td, th {
+            
+            padding: 8px;
+            margin: 10px;
+            width: 40%;
+        }
+        
+
+        
+
+
+        .container1 {
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            transform: translate(-50%, -50%);
+            font-size:110%;
+            text-align: center;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            white-space: nowrap;
+        }
+    </style>
+
+</head>
+<body>
+<a href = "{% url 'OPS'  %}" class=h2>VIPA</a>
+    
+
+<div class = container1>   
+    <table class="table" align="center">
+        {% for query in queryset %}
+        <tr>
+            <td class='row'> {{ query.number }} </td>
+            <td class='row'> {{ query.seal }} </td>
+            <td class='row'> {{ query.bales }} </td>
+            <td class='row'> {{ query.gross }} </td>
+            <td class='row'> {{ query.tara }} </td>
+            <td class='row'> {{ query.vgm }} </td>
+            <td class='row1'><a href = "{% url 'ContainerUpdate1' query.id %}" class='link1'>Update</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href = "{% url 'Result' number %}" class='link'>Back</a>
+    <a href = "{% url 'ContainerCreate1' shipment_id %}" class='link'>Create</a>
+<div/>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        
+        .h2 {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:400%;
+            font-weight: 700%;
+            color: red;
+            outline: none;
+            text-decoration: none;
+            position: absolute;
+        }
+
+        .h2:hover{
+          font-size:405%;  
+        }
+        .one {
+            padding:10px;
+            margin:5px;  
+            border: thin solid black;
+            border-radius: 1px;
+            }
+        
+        
+        .container1 {
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            transform: translate(-50%, -50%);
+            font-size:110%;
+            text-align: center;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+
+        .button{
+            margin: 5px;
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            background: none;
+            padding: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-left: 5px;
+            margin-right: 10px;
+            color: black;
+            font-size:80%;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+           
+        }
+        
+        .button:hover {
+    
+            background: black;
+            outline: none;
+            color: white;
+            cursor: pointer;
+           
+        }
+        
+        .link {
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 10px;
+            color: black;
+            font-size:80%;
+           }
+
+        .link:hover {
+            background: black;
+            color: white;
+            outline: none;
+
+        }
+        .close {
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            margin-left: 5px;
+            padding: 10px;
+            padding-left: 20px;
+            padding-right: 20px;
+            color: black;
+            font-size:80%;
+           }
+
+        .close:hover {
+            background: black;
+            color: white;
+            outline: none;
+
+        }
+        .cancel {
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            color: black;
+            font-size:80%;
+           }
+
+        .cancel:hover {
+            background: black;
+            color: white;
+            outline: none;
+
+        }
+        .delete {
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            margin-left: 9px;
+            padding: 10px;
+            padding-left: 17px;
+            padding-right: 17px;
+            color: black;
+            font-size:80%;
+           }
+
+        .delete:hover {
+            background: black;
+            color: white;
+            outline: none;
+
+        }
+
+
+        .line {
+            white-space: nowrap;
+            text-align: left;
+        }
+        
+        .line1 {
+            white-space: nowrap;
+            text-align:left;
+        }
+        
+        #min {
+            margin-left: 38px;
+        }
+
+        #price {
+            margin-left: 43px;
+            width: 60px;
+        }
+        #cntr {
+            margin-left: 25px;
+        }
+        
+        #
+
+
+    </style>
+
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <title>OPS</title>
+
+</head>
+
+<body>
+
+<a href = "{% url 'OPS'  %}" class=h2>VIPA</a>
+
+<div class="container1">
+    
+    <form method = 'POST'>
+        {% csrf_token %}
+
+        <div class="line">
+            {{ form.date.label }}
+            {{ form.date }}
+            
+            {{ form.cntr.label }}
+            {{ form.cntr }}
+            
+            {{ form.comment.label }}
+            {{ form.comment }}
+            <button type="submit" class='button'>Submit</button>
+            <a href = "{% url 'Result' number %}" class='cancel'>Cancel</a>
+        </div>
+        <div class="line">
+            {{ form.Tons.label }}
+            {{ form.Tons }}
+            
+            {{ form.min.label }}
+            {{ form.min }}
+            
+            {{ form.cost.label }}
+            {{ form.cost }}
+            {{ form.currency }}
+            <a href = "{% url 'Close' sales_id  %}" class="close">Close</a>
+            <a href = "{% url 'SalesDelete' sales_id  %}" class="delete">Delete</a>
+        </div>
+        <div class=none>
+        {{ form1.number.label }}
+        {{ form1.number }}
+        </div>
+    </form>
+    <br>
+</div>
+<script type="text/javascript">
+    const current = {{current|safe}};
+    const values = {{ports|safe}};
+</script>
+<script src="{% static 'Script1.js' %}"></script>
+</body>
+
+</html>
+
+
+
+
+

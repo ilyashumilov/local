@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .one {
+            padding:10px;
+            margin:5px;  
+            border: thin solid black;
+            border-radius: 1px;
+            }
+        
+        .overlay1 {
+            margin-top: 5px;
+
+            height: 0px;
+            position: absolute;  /* <-- added declarations */
+            left: 0; top: 100%;  /*     here               */
+            width: 100%;         /*     and here...        */
+        }
+        .container1 {
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            transform: translate(-50%, -50%);
+            font-size:110%;
+            text-align: center;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+            
+
+        }
+
+        h1 {
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:150%;
+        }
+        
+        .h2 {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:400%;
+            font-weight: 700%;
+            color: red;
+            outline: none;
+            text-decoration: none;
+            position: absolute;
+        }
+
+        .h2:hover{
+          font-size:405%;  
+        }
+
+        .button{
+            margin: 5px;
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            background: none;
+            padding: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            position: absolute;
+            left: 538px;
+            color: black;
+            font-size:80%;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+           
+        }
+
+        .button:hover {
+    
+            background: black;
+            outline: none;
+            color: white;
+            cursor: pointer;
+           
+        }
+        
+        .back {
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            position: absolute;
+            left: 543px;
+            top: 105px;
+            padding: 10px;
+            padding-top: 9px;
+
+            color: black;
+            font-size:80%;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            border-radius: 1px;
+            
+           }
+        .variants_box1 {
+            width: 167px;
+            max-height: 55px;
+            background-color: white;
+            position: absolute;
+            left: 288px;
+            top: 143px;
+            z-index: 1;
+            overflow-y: auto;
+            overflow-x: auto;
+        }
+        
+        li {
+            list-style: none;
+            padding: 3px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:85%;
+        }
+
+        li:hover {
+            cursor: pointer;
+            background: gold;
+        }
+        .back:hover {
+    
+            background: black;
+            outline: none;
+            color: white;
+            
+        }
+        .delete {
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            position: absolute;
+            top:52px;
+            left: 632px;
+            padding: 10px;
+            padding-left: 18px;
+            padding-right: 18px;
+            color: black;
+            font-size:80%;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            border-radius: 1px;
+            
+           }
+        
+        .delete:hover {
+    
+            background: black;
+            outline: none;
+            color: white;
+            
+        }
+
+        .line {
+            white-space: nowrap;
+            text-align: left;
+        }
+        
+        .line1 {
+            white-space: nowrap;
+            text-align:left;
+        }
+
+        #date {
+            margin-left: 10px;
+        }
+        #tons {
+            margin-left: 7px;
+        }
+        #price {
+            width: 61px;
+        }
+        .currency {
+            padding: 9px;
+            margin:5px;  
+            border: thin solid black;
+            border-radius: 1px;
+        }
+        .none {
+            position: absolute;
+            left: 236px;
+            top: 100px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+    </style>
+
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <title>OPS</title>
+
+</head>
+
+<body>
+
+<a href = "{% url 'OPS'  %}" class=h2>VIPA</a> 
+
+<div class="container1">
+
+    <form method = 'POST'>
+        {% csrf_token %}
+        
+        <div class="line" >
+            {{ form.date.label }}
+            {{ form.date }}
+            {{ form.price.label }} 
+            {{ form.price }}
+            {{ form.currency }}
+            {{ form.number.label }}
+            {{ form.number }}
+        </div>
+
+        
+        <div class="line1"> 
+            {{ form.cntr.label }}   
+            {{ form.cntr }}   
+            
+            {{ form.Tons.label }}
+            {{ form.Tons }}
+
+            <a href = "{% url 'PurchaisesDelete' purchaise  %}" class="delete">Delete</a>
+            <button class='button' type="submit">Submit</button>
+        </div>
+        
+        <div class=none>
+            {{ form1.number1.label }}
+            {{ form1.number1 }}    
+        </div>
+        
+        <div class="variants_box1" id="variants"></div>
+    </form>
+    <a href = "{% url 'Result' number %}" class='back'>Back</a>
+</div>
+<script type="text/javascript">
+    const current = {{current|safe}};
+    const values = {{ports|safe}};
+</script>
+<script src="{% static 'Script1.js' %}"></script>
+</body>
+
+</html>

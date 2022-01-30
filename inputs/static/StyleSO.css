@@ -1,0 +1,12 @@
+input {
+    border: thin solid black;
+    border-radius: 1px;
+    width: 130px;
+    height: 36px;
+    padding-left: 10px;
+    position: absolute;
+}
+
+.date {
+    
+}

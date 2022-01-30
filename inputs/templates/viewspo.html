@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OPS</title>
+    <style>
+        
+        .h2 {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:400%;
+            font-weight: 700%;
+            color: red;
+            outline: none;
+            text-decoration: none;
+            position: absolute;
+        }
+
+        .h2:hover{
+          font-size:405%;  
+        }
+
+        .link1 {
+            outline: none;
+            text-decoration: none;
+            color: white;
+            font-size:90%;
+           }
+        
+        .link1: hover {
+            outline: none;
+            text-decoration: none;
+            color: black;
+            font-size:90%;
+           }
+        
+        .row1 {
+            
+            padding: 10px;
+            color: black;
+            font-size:100%;
+            background-color: #ffd70063;
+        }    
+       
+
+        .row {
+        
+            padding: 10px;
+            color: black;
+            font-size:100%;
+            background-color: #1f39bf9f;
+        }    
+        .row9 {
+            font-size:85%;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+        }
+
+                
+        .table {
+            border-spacing: 4px;
+            margin: 20px;
+        }
+
+        .link {
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 10px;
+
+            color: black;
+            font-size:90%;
+           }
+
+        .link:hover {
+            background: black;
+            color: white;
+            outline: none;
+
+        }
+        
+        td, th {
+            
+            padding: 8px;
+            margin: 10px;
+            width: 40%;
+        }
+        
+        .box {
+            width: 1000px;
+            margin: 250px auto;
+            position: relative;
+            text-align: center;
+            height: 1100px;
+            overflow-y: auto;
+            overflow-x: auto;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            white-space: nowrap;
+        }
+        .link1 {
+            outline: none;
+            text-decoration: none;
+            color: white;
+            font-size:90%;
+           }
+        
+        .link1: hover {
+            outline: none;
+            text-decoration: none;
+            color: black;
+            font-size:90%;
+           }
+    </style>
+
+</head>
+<body>
+<a href = "{% url 'OPS'  %}" class=h2>VIPA</a>
+    
+<div class="box">
+    <table class="table" align="center">
+        <tr class=row9>
+            <td> Date </td>
+            <td> Number </td>
+            <td> Client </td>
+            <td> Origin </td>
+            <td> Cntrs </td>
+            <td> Tons </td>
+            <td> Price </td>
+            <td> Material </td>
+            <td> Closed </td>
+        </tr>
+        <tr class=row1>
+            <td> {{ salesorder.date }} </td>
+            <td> {{ salesorder.number }} </td>
+            <td> {{ salesorder.client }} </td>
+            <td> {{ salesorder.destination }} </td>
+            <td> {{ salesorder.cntr }} </td>
+            <td> {{ salesorder.Tons }} </td>
+            
+            {% if salesorder.currency == 'USD' %}
+            <td> {{ salesorder.cost }}{{'$'}} </td>
+            {% endif %}
+            {% if salesorder.currency == 'EUR' %}
+            <td> {{ salesorder.cost }}{{'€'}} </td>
+            {% endif %}
+            
+            <td> {{ salesorder.material }} </td>
+            <td> {{ closed }} </td>
+        </tr>
+    </table>
+    <table class="table" align="center"> 
+        {% if len != 0 %}
+        <tr class=row9>
+            <td> Date </td>
+            <td> Number </td>
+            <td> Supplier </td>
+            <td> Destination </td>
+            <td> Cntrs </td>
+            <td> Tons </td>
+            <td> Sailed </td>
+            <td> Price </td>
+        </tr>
+        {% for purchaise in purchaises %}
+
+        <tr class=row>
+            <td> {{ purchaise.date }} </td>
+            <td> {{ purchaise.number }} </td>
+            <td> {{ purchaise.Proveedor }} </td>
+            <td> {{ purchaise.Origin }} </td>
+            <td> {{ purchaise.cntr }} </td>
+            <td> {{ purchaise.Tons }} </td>
+            <td> {{ sailed|get_item:purchaise.id }} </td>            
+            {% if purchaise.currency == 'USD' %}
+            <td> {{ purchaise.price }}{{'$'}} </td>
+            {% endif %}
+            {% if purchaise.currency == 'EUR' %}
+            <td> {{ purchaise.price }}{{'€'}} </td>
+            {% endif %}
+        </tr>
+
+        {% endfor %}
+        {% endif %}
+        
+    </table>
+    <a href = "{% url 'SalesViews'   %}" class='link'>Back</a>
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Principal</title>
+    <style>
+        
+        .h2 {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:400%;
+            font-weight: 700%;
+            color: red;
+            outline: none;
+            text-decoration: none;
+            position: absolute;
+        }
+
+        .h2:hover{
+          font-size:405%;  
+        }
+
+
+        .link1 {
+            outline: none;
+            text-decoration: none;
+            color: white;
+            font-size:90%;
+           }
+        
+        .link1: hover {
+            outline: none;
+            text-decoration: none;
+            color: black;
+            font-size:90%;
+           }
+        
+        .row1 {
+            
+            padding: 10px;
+            color: black;
+            font-size:100%;
+            
+            background-color: #1f39bf9f;
+        }
+        
+        .row {
+            background-color: deeppink;
+            font-size:90%;
+     
+        }        
+    
+        .table {
+            border-spacing: 4px;
+            margin: 20px;
+        }
+
+        .link {
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 10px;
+
+            color: black;
+            font-size:90%;
+           }
+
+        .link:hover {
+            background: black;
+            color: white;
+            outline: none;
+
+        }
+        
+        td, th {
+            
+            padding: 8px;
+            margin: 10px;
+            width: 40%;
+        }
+        
+        .container1 {
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            transform: translate(-50%, -50%);
+            font-size:110%;
+            text-align: center;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            white-space: nowrap;
+        }
+        .head {
+            font-size:90%;
+            font-weight: 200%;
+        }
+        
+        .row2 {
+            
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 10px;
+            color: black;
+            font-size:80%;
+            
+            background-color: white;
+        }
+        
+        .row2:hover {
+            background: black;
+            outline: none;
+            color: black;
+        }
+        
+        .link1 {
+            outline: none;
+            text-decoration: none;
+            color: white;
+            font-size:90%;
+           }
+        
+        .link1: hover {
+            outline: none;
+            text-decoration: none;
+            color: black;
+            font-size:90%;
+           }
+    </style>
+
+</head>
+<body>
+<a href = "{% url 'OPS'  %}" class=h2>VIPA</a>
+    
+<div class="container1">
+
+    <table class="table" align="center"> 
+        {% if len != 0 %}
+        <tr>
+            <td class=head> Date </td>
+            <td class=head> Supplier </td>
+            <td class=head> Material </td>
+            <td class=head> Origin </td>        
+            <td class=head> Cntr </td>
+            <td class=head> Tons </td>
+            <td class=head> Price </td>
+        </tr>
+        {% endif %}
+        {% for purchaise in purchaises %}
+        <tr>
+            <td class=row> {{ purchaise.date }} </td>
+            <td class=row> {{ purchaise.Proveedor }} </td>
+            <td class=row> {{ purchaise.material }} </td>
+            <td class=row> {{ purchaise.Origin }} </td>
+            <td class=row> {{ purchaise.cntr }} </td>
+            <td class=row> {{ purchaise.Tons }} </td>
+            <td class=row> {{ purchaise.price }} </td>
+            <td class=row2><a href = "{% url 'AwailableSO' purchaise.id  %}" class='link1'>Allocate</a></td>
+        </tr>
+
+        {% endfor %}
+        
+    </table>
+    <a href = "{% url 'SalesViews'   %}" class='link'>Back</a>
+</div>
+
+</body>
+</html>
+

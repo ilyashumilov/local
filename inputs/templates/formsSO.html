@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <style>
+        .box {
+            width: 900px;
+            margin: 325px auto;
+            position: relative;
+        }
+        
+        .h2 {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:400%;
+            font-weight: 700%;
+            color: red;
+            outline: none;
+            text-decoration: none;
+            position: absolute;
+        }
+
+        .h2:hover{
+          font-size:405%;  
+        }
+        input, select {
+            border: thin solid black;
+            border-radius: 1px;
+            width: 130px;
+            height: 36px;
+            padding-left: 10px;
+            position: absolute;
+        }
+        
+        select {
+            width: 60px;
+            height: 40px;
+            padding-left: 5px;
+            left: 550px;
+            top: 52px;
+            
+        }
+        
+        .date {
+            font-size:90%;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        .destination {
+            left: 155px;     
+        }
+        .client {
+            left: 310px;
+        }
+        .number {
+            left: 465px;
+        }
+        .material {
+            left: 620px;
+        }
+        
+        button {
+            border: thin solid black;
+            background: none;
+            color: black;
+            border-radius: 1px;
+            width: 65px;
+            height: 40px;
+
+            
+            position: absolute;
+            left: 853px;
+            top: 52px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:85%;
+        }
+
+        button:hover {
+            cursor: pointer;
+            background: black;
+            color: white;
+        }
+        .cpt {
+            left:775px;
+        }
+        
+        .cntr {
+            top: 52px;
+        }
+        .Tons {
+            top: 52px;
+            left: 155px;
+            z-index: 0;
+        }
+        
+        .min {
+            top: 52px;
+            left: 310px;
+        }
+        .cost {
+            top: 52px;
+            left: 465px;
+            width: 60px;
+
+        }
+        .comment {
+            top: 52px;
+            left: 620px;
+        }
+        
+        .variants_box1 {
+            width: 144px;
+            max-height: 55px;
+            background-color: white;
+            position: absolute;
+            left: 310px;
+            top: 39px;
+            z-index: 1;
+            overflow-y: auto;
+            overflow-x: auto;
+        }
+
+
+        .variants_box2 {
+            width: 144px;
+            max-height: 55px;
+            background-color: white;
+            position: absolute;
+            left: 155px;
+/*            left: 465px;*/
+            top: 39px;
+            z-index: 1;
+            overflow-y: auto;
+            overflow-x: auto;
+        }
+
+        .variants_box3 {
+            width: 144px;
+            max-height: 55px;
+            background-color: white;
+            position: absolute;
+            left: 620px;
+            top: 39px;
+            z-index: 1;
+            overflow-y: auto;
+            overflow-x: auto;
+        }
+        
+        
+        li {
+            list-style: none;
+            padding: 3px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:85%;
+        }
+
+        li:hover {
+            cursor: pointer;
+            background: gold;
+        }
+
+        .link {
+            outline: none;
+            border: thin solid black;
+            border-radius: 1px;
+            text-decoration: none;
+            color: black;
+            width: 65px;
+            height: 27px;
+            position: absolute;
+            top: 52px;
+            left: 775px;
+            vertical-align: middle;
+            text-align: center;
+            padding-top:11px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:85%;
+            
+
+           }
+
+        .link:hover {
+            background: black;
+            color: white;
+            outline: none;
+        }
+
+        
+    </style>
+
+    <meta charset="UTF-8">
+    <title>OPS</title>
+
+</head>
+
+<body>
+
+<a href = "{% url 'OPS'  %}" class=h2>VIPA</a>
+<div class="box">
+    <form method = 'POST'>
+        {% csrf_token %}
+        {{ form.date }}
+        {{ form.destination }}
+        {{ form.client }}    
+        {{ form.number }}
+        {{ form.material }}
+        {{ form.cpt }}
+        {{ form.cntr }}
+        {{ form.Tons }}
+        {{ form.min }}
+        {{ form.cost }}
+        {{ form.currency }}
+        {{ form.comment }}
+
+        <button type="submit" class='button'>Submit</button>
+        <a href = "{% url 'SalesViews'  %}" class ='link'>Back</a>        
+    </form>
+    <div class="variants_box1" id="variants_box1"></div>
+    <div class="variants_box3" id="variants_box3"></div>
+    <div class="variants_box2" id="variants_box2"></div>
+</div>
+    
+<script type="text/javascript">
+    const values1 = {{proveedores|safe}};
+    const values2 = {{ports|safe}};
+    const values3 = {{materials|safe}};
+</script>
+<script src="{% static 'ScriptPO.js' %}"></script>
+</body>
+
+</html>
+

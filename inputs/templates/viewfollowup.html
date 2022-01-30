@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OPS</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Style.css' %}">
+    <style>
+        .box {
+            width: 1400px;
+            margin: 150px auto;
+            position: relative;
+            text-align: center;
+            height: 570px;
+            overflow-y: auto;
+            overflow-x: auto;
+            white-space: nowrap;
+        }   
+    </style>
+</head>
+<body>
+
+<h class=h2>VIPA</h>
+
+<div class="box" >
+    
+        <table class="table" align="center" >
+        <tr>
+            <td class=head> BK number </td>
+            <td class=head> Shipment </td>
+            <td class=head> Supplier </td>
+            <td class=head> Origin </td> 
+             
+            <td class=head> Payment status </td>
+            <td class=head> Registered </td>
+            <td class=head> Comment</td>
+        </tr>
+
+        {% for item in queryset %}
+        <tr>
+            <td class=row2> {{ item.bknumber }} </td>
+            <td class=row2> {{ item.number }} </td>
+            <td class=row2> {{ item.Supplier }} </td>
+            <td class=row2> {{ item.origincountry }} </td>
+            
+            {% if item.payment_status == True %}
+            <td class=row4> {{ ' ' }} </td>
+            {% endif %}
+            
+            {% if item.payment_status == False %}
+            <td class=row5> {{ ' ' }} </td>
+            {% endif %}
+            
+            {% if item.registered == True %}
+            <td class=row4> {{ ' ' }} </td>
+            {% endif %}
+            
+            {% if item.registered == False %}
+            <td class=row5> {{ ' ' }} </td>
+            {% endif %}
+            <td class=row2> {{ item.comment }} </td>
+            <td><a href="{%url 'followupUpdate' item.id %}" class="link">Update</a></td>
+        </tr>
+            {% endfor %}
+</div>
+</body>
+</html>

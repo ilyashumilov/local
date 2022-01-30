@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .one {
+            padding:10px;
+            margin:5px;  
+            border: thin solid black;
+            border-radius: 1px;
+           
+            }
+        
+        .overlay1 {
+            margin-top: 5px;
+
+            height: 0px;
+            position: absolute;  /* <-- added declarations */
+            left: 0; top: 100%;  /*     here               */
+            width: 100%;         /*     and here...        */
+           
+}
+        
+
+        
+        .container1 {
+            position: absolute;
+            left: 50%;
+            top: 45%;
+            transform: translate(-50%, -50%);
+            font-size:110%;
+            text-align: center;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+            
+
+        }
+
+        h1 {
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:150%;
+        }
+        
+        .h2 {
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size:400%;
+            font-weight: 700%;
+            color: red;
+            outline: none;
+            text-decoration: none;
+            position: absolute;
+        }
+
+        .h2:hover{
+          font-size:405%;  
+        }
+
+        .button{
+            margin: 5px;
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            background: none;
+            padding: 10px;
+            margin-left: 5px;
+            margin-right: 10px;
+            color: black;
+            font-size:80%;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+           
+        }
+
+        .button:hover {
+    
+            background: black;
+            outline: none;
+            color: white;
+           
+        }
+        
+        .link {
+            outline: none;
+            border: thin solid black;
+            text-decoration: none;
+            padding: 10px;
+            color: black;
+            font-size:80%;
+            font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            border-radius: 1px;
+            
+           }
+        
+        .link:hover {
+    
+            background: black;
+            outline: none;
+            color: white;
+        }
+        
+        .line {
+            white-space: nowrap;
+            text-align: right;
+        }
+        
+        .line1 {
+            white-space: nowrap;
+            text-align:left;
+        }
+
+    </style>
+
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <title>Input form</title>
+
+</head>
+
+<body>
+
+<a href = "{% url 'OPS'  %}" class=h2>VIPA</a>
+
+<div class="container1">
+   
+    <form method = 'POST'>
+        {% csrf_token %}
+        <div class="line" >
+            {{ form.name }}
+            {{ form.volume }}
+            {{ form.currency }}
+            <button type="submit" class='button'>Submit</button>
+            <a href = "{% url 'CostViews' shipment_id %}" class='link'>Back</a>
+        </div>
+        <div class ='a' id ="variants"></div>
+
+    </form>
+    <br>
+
+</div>
+
+<script type="text/javascript">
+    const countries = {{orders|safe}};
+  
+</script>
+<script src="{% static 'Script1.js' %}">
+</script>
+</body>
+
+</html>
