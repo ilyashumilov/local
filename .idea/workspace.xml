@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b34d8fc-d3a4-4e1f-a8a4-196f10d93987" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inputs/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/inputs/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inputs/templates/views.html" beforeDir="false" afterPath="$PROJECT_DIR$/inputs/templates/views.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inputs/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/inputs/views.py" afterDir="false" />
     </list>
@@ -37,6 +40,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">

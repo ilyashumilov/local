@@ -184,7 +184,7 @@ def f(request):
        return redirect('OPS')
 def w(request):
    user = request.user
-   df_sales = pd.read_excel('/Users/ilya.shumilov/Desktop/Script (1) (1).xlsx', sheet_name='shipments')
+   df_sales = pd.read_excel('/Users/a111/Desktop/Script (1) (1).xlsx', sheet_name='shipments')
    df_sales = pd.DataFrame(df_sales)
    count = -1
    print(df_sales)
@@ -227,7 +227,7 @@ def w(request):
                  cpt=str(df_sales.loc[count, 'Customers Payment Terms']), stat=True)
        sale.save()
 
-       purchaise = PO(so=sale, number=df_sales.loc[count, 'PO'][:10], Proveedor=proveedor, Origin=origin,
+       purchaise = PO(so=sale, number=df_sales.loc[count, 'PO'][:11], Proveedor=proveedor, Origin=origin,
                       date=df_sales.loc[count, 'PO date'], material=material1,
                       cntr=int(df_sales.loc[count, 'Cntrs']), \
                       Tons=float(str(df_sales.loc[count, 'Tons']).replace(',', '.')), price=cost, currency='USD', \
@@ -261,6 +261,7 @@ def w(request):
        actualizeShip(ship.id)
        # except:
        #     pass
+
 def z(request):
    user = request.user
    df_sales = pd.read_excel('/Users/a111/Desktop/Script (1).xlsx',sheet_name='SO')
@@ -2341,6 +2342,7 @@ def SalesViews(request):
             number = form.cleaned_data['number']
             number1 = form.cleaned_data['number1']
         return redirect('ParticularSO', number,number1)
+    sales=sales.order_by('id')
     context = {
         'all': all1,
         'form': form,

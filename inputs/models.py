@@ -41,7 +41,7 @@ class SO(models.Model):
     min = models.DecimalField(max_digits=10, decimal_places=2)
     cost = models.DecimalField(max_digits=10, decimal_places=2)
     currency = models.CharField(max_length=20)
-    comment = models.TextField(max_length = 100)
+    comment = models.TextField(max_length = 1000)
     cpt = models.CharField(max_length = 10)
 
     stat = models.BooleanField(default=False)
@@ -263,7 +263,7 @@ class Freight(models.Model):
 class Costs(models.Model):
     shipment = models.ForeignKey(Shipment, on_delete = models.CASCADE)
     name =  models.TextField(max_length = 50)
-    volume = models.DecimalField(max_digits=10, decimal_places=2)
+    volume = models.DecimalField(max_digits=15, decimal_places=2)
     currency = models.CharField(max_length=20)
 
 class FinCosts(models.Model):
