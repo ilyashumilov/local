@@ -504,7 +504,7 @@
     </table>
 </div>
 <div class='manage'>
-    {% if request.user.username == 'managerlatam' or request.user.username == 'managereurope' or gamma == 'import' %}
+    {% if request.user.username == 'managerlatam' or request.user.username == 'managereurope' or request.user.username == 'managerrussia' or gamma == 'import' %}
     <div class="dropdown">
         <button class="dropbtn">Report</button>
         <div class="dropdown-content">
