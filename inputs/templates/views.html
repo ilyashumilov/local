@@ -205,12 +205,12 @@
             padding-left: 23px;
             padding-right: 23px;
             margin: 5px;
+            margin-top: 10px;
 
             color: black;
             font-size:90%;
             font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
            }
-
 
         .link2:hover {
             background: black;
@@ -255,6 +255,17 @@
             margin-left: 20px;
             font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
         }
+                    
+        .cntr {
+            position: absolute;
+            left: 173px;
+            top: -10px;
+            white-space: nowrap;
+            max-width: 1200px;
+            overflow-x: auto;
+            height: 200px;
+            padding: 10px;
+        }
     </style>
 
 </head>
@@ -262,9 +273,13 @@
 <a href = "{% url 'OPS'  %}" class=h2>VIPA</a>
 <div class='particular'>
     <a href = "{% url 'Away' moveaway.id  %}" class='link2'>Move Aways {{ cm }} mt</a>
-    {% for i in countries %}
-    <a href = "{% url 'ParticularSO' i ' ' %}" class=link2>{{ i }}</a>
-    {% endfor %}
+    
+    <div class=cntr>
+        {% for i in countries %}
+        <a href = "{% url 'ParticularSO' i ' ' %}" class=link2>{{ i }}</a>
+        {% endfor %}
+    </div>
+    
 </div>  
 <form method = 'POST'>
     {% csrf_token %}

@@ -184,7 +184,7 @@ def f(request):
        return redirect('OPS')
 def w(request):
    user = request.user
-   df_sales = pd.read_excel('/Users/a111/Desktop/Script (1) (1).xlsx', sheet_name='Shipment')
+   df_sales = pd.read_excel('/Users/ilya.shumilov/Desktop/Script (1) (1).xlsx', sheet_name='shipments')
    df_sales = pd.DataFrame(df_sales)
    count = -1
    print(df_sales)
