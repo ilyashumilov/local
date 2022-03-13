@@ -1,0 +1,5 @@
+CRM system designed to cover the operational control of logistics processes.
+Represents a multi-user Django application with back-up system based on integration with Google API and reporting system via excell filtes created by BytesIO.
+
+Deployed on Heroku server:
+https://operationalcontrol.herokuapp.com
